@@ -119,8 +119,7 @@ Query 2 – Build Timeline
 <img width="1916" height="452" alt="image" src="https://github.com/user-attachments/assets/4660a09b-e135-41ee-b906-81167a2b9817" />
 
 Query 3 – First Seen / Last Seen
-![Uploading image.png…]()
-
+<img width="1909" height="448" alt="image" src="https://github.com/user-attachments/assets/ae32e6ae-4fc4-423f-8c9c-7183388ebb81" />
 
 ---
 Confirmation Criteria
