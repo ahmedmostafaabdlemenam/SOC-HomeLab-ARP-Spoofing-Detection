@@ -91,6 +91,9 @@ sensor
 ### Step 1 – Review ARP Traffic
 
 Understanding the available fields and overall traffic behavior.
+<img width="1908" height="810" alt="image" src="https://github.com/user-attachments/assets/056d3462-76d0-42fd-ac5c-a3db19cfdd1f" />
+
+
 
 ### Step 2 – Build Baseline
 
