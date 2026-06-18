@@ -93,30 +93,41 @@ sensor
 Understanding the available fields and overall traffic behavior.
 <img width="1908" height="810" alt="image" src="https://github.com/user-attachments/assets/056d3462-76d0-42fd-ac5c-a3db19cfdd1f" />
 
-
-
 ### Step 2 – Build Baseline
-
-Identify normal IP-to-MAC mappings across the environment.
+<img width="1914" height="656" alt="image" src="https://github.com/user-attachments/assets/4693c118-8200-4335-9bfd-e417802a8d18" />
 
 ### Step 3 – Detect Anomalies
-
-Search for IP addresses associated with multiple MAC addresses.
+<img width="1915" height="561" alt="image" src="https://github.com/user-attachments/assets/18a66ba8-20c9-4c9e-87a4-5ed3d145b397" />
 
 ### Step 4 – Investigate Suspicious Activity
-
-Review suspicious ARP Reply traffic and validate findings.
+<img width="1898" height="684" alt="image" src="https://github.com/user-attachments/assets/0a471ce7-357a-4182-b16a-370a381b1abc" />
 
 ### Step 5 – Identify Affected Hosts
 
-Determine which hosts received spoofed ARP responses.
+<img width="1916" height="490" alt="image" src="https://github.com/user-attachments/assets/c3bf6e4a-db99-49c4-923f-e4cc77fe24b0" />
+
 
 ### Step 6 – Confirm Potential Attack
+Objective
 
 Validate collected evidence and assess impact.
 
----
+Query 1 – Count Spoofed Events
+<img width="1903" height="537" alt="image" src="https://github.com/user-attachments/assets/87d0ee53-4740-4c2c-a5b8-bbfdb995bb7f" />
 
+Query 2 – Build Timeline
+<img width="1916" height="452" alt="image" src="https://github.com/user-attachments/assets/4660a09b-e135-41ee-b906-81167a2b9817" />
+
+Query 3 – First Seen / Last Seen
+![Uploading image.png…]()
+
+
+---
+Confirmation Criteria
+Same IP associated with multiple MAC addresses.
+Repeated ARP Reply activity.
+Multiple affected hosts.
+Gateway IP impersonation observed.
 ## Detection Logic
 
 Under normal conditions, a single IP address should be associated with a single MAC address.
@@ -178,7 +189,14 @@ index=arp sender_ip="192.168.10.1"
 index=arp sender_mac="AA:BB:CC:DD:EE:FF"
 | stats values(target_ip) as Victims
 ```
+## Indicators of Compromise (IOCs)
 
+| Indicator | Value |
+|------------|------------|
+| Suspicious IP | 192.168.10.1 |
+| Legitimate MAC | 00:11:22:33:44:55 |
+| Rogue MAC | AA:BB:CC:DD:EE:FF |
+| Victims | 192.168.10.101, 192.168.10.102, 192.168.10.103 |
 ---
 
 ## Findings
@@ -207,8 +225,7 @@ Potential ARP Spoofing Activity Confirmed
 ### Tactic
 
 ```text
-Credential Access
-```
+Credential ```
 
 ### Technique
 
@@ -217,11 +234,16 @@ T1557 - Adversary-in-the-Middle
 ```
 
 ---
+## Lessons Learned
+
+- ARP traffic should be baselined before building detections.
+- Multiple MAC addresses associated with a single IP can indicate ARP cache poisoning.
+- Network-layer attacks may not be visible in Windows Security Logs.
+- Splunk can be used effectively for network anomaly detection and investigation.
 
 ## Skills Demonstrated
 
 * Security Monitoring
-* Threat Hunting
 * Detection Engineering
 * Network Traffic Analysis
 * Splunk SPL
