@@ -225,28 +225,3 @@ T1557 - Adversary-in-the-Middle
 * Incident Investigation
 * MITRE ATT&CK Mapping
 * SOC Analyst Methodology
-
----
-
-## Repository Structure
-
-```text
-SOC-HomeLab-ARP-Spoofing-Detection
-
-├── Dataset
-│   └── SOC-HOMELAB-ARP-Spoofing-Realistic-700Events.jsonl
-
-├── Detection
-│   └── detection_rule.md
-
-├── Investigation
-│   └── arp_spoofing_investigation.md
-
-├── Screenshots
-│   ├── 01_data_upload.png
-│   ├── 02_baseline.png
-│   ├── 03_detection.png
-│   └── 04_investigation.png
-
-└── README.md
-```
